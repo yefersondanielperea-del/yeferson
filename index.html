@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Gustos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mis Gustos Son</h1>
+        <hr>
+        <p><strong>Yeferson Daniel Perea Rodríguez</strong></p>
+        <p>Soy un joven de 17 años que estudia ADSO en el SENA y en tiempo libre le gusta mucho dormir, ver películas, jugar fútbol y nadar.</p>
+        <hr>
+
+        <!-- Imagen Blessed -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Blessd_en_2026.jpg" alt="Blessd en 2026" class="img-principal">
+        <hr>
+
+        <!-- Input número -->
+        <div class="bloque-numero">
+            <h3>Escribe un número</h3>
+            <input type="number" id="numeroInput" placeholder="Ingresa un número">
+            <button class="btn" onclick="verificarNumero()">Verificar</button>
+            <p id="resultadoNumero"></p>
+        </div>
+        <hr>
+
+        <!-- Selector -->
+        <div class="bloque-seleccion">
+            <h3>Selecciona uno</h3>
+            <select id="selector">
+                <option value="">--Elige--</option>
+                <option value="peliculas">Películas</option>
+                <option value="futbol">Fútbol</option>
+                <option value="nadar">Nadar</option>
+            </select>
+            <button class="btn" onclick="mostrarImagen()">Mostrar</button>
+            <br>
+            <img id="imagenSeleccionada" alt="Imagen seleccionada" class="img-seleccion">
+        </div>
+        <hr>
+
+        <p class="footer-text">Mis Gustos</p>
+    </div>
+
+    <script>
+        function verificarNumero(){
+            let num = Number(document.getElementById("numeroInput").value);
+            let mensaje = document.getElementById("resultadoNumero");
+            if(num > 60){
+                mensaje.textContent = "Te pasaste";
+                mensaje.style.color = "#D32F2F";
+            }else if(num < 25){
+                mensaje.textContent = "Está muy abajo";
+                mensaje.style.color = "#FFA000";
+            }else if(num === 45){
+                mensaje.textContent = "Adivinaste";
+                mensaje.style.color = "#388E3C";
+            }else{
+                mensaje.textContent = "Número entre 25 y 60 (no es 45)";
+                mensaje.style.color = "#333";
+            }
+        }
+
+        function mostrarImagen(){
+            let opcion = document.getElementById("selector").value;
+            let img = document.getElementById("imagenSeleccionada");
+            if(opcion === "peliculas"){
+                img.src = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80";
+                img.alt = "Película";
+            }else if(opcion === "futbol"){
+                img.src = "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80";
+                img.alt = "Fútbol";
+            }else if(opcion === "nadar"){
+                img.src = "https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=600&q=80";
+                img.alt = "Nadar";
+            }else{
+                img.src = "";
+                img.alt = "";
+            }
+        }
+    </script>
+</body>
+</html>
